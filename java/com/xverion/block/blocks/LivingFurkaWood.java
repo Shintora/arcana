@@ -1,11 +1,13 @@
 package com.xverion.block.blocks;
 
 import com.xverion.block.block;
+import com.xverion.power.blockPowerStorage;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.world.World;
 
 import java.util.Random;
 
@@ -16,7 +18,9 @@ import java.util.Random;
 public class LivingFurkaWood extends Block
 {
 
+    World world = this.world;
 
+    static blockPowerStorage storage = new blockPowerStorage(1500, 1200);
 
     public LivingFurkaWood(Material material)
     {
@@ -40,4 +44,11 @@ public class LivingFurkaWood extends Block
     }
 
 
+    public static void ReceivePower(double amount){
+        storage.addpowerToStorage(amount);
+         if(storage.CheckAmountForImbue())
+         {
+
+         }
+    }
 }

@@ -1,10 +1,7 @@
 package com.xverion.power;
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
-
-import java.util.Random;
 
 
 
@@ -15,7 +12,9 @@ public class powerManager
 {
     protected static String namePlayer;
 
-    protected double[] runes = {1000, 3000, 6000, 12000, 16000, 20000, 30000, 60000};
+    protected int playerLevelRune;
+
+    protected double[] runes = {100, 1000, 3000, 6000, 12000, 16000, 20000, 30000, 60000};
 
     public static boolean powerChannel;
 
@@ -28,36 +27,25 @@ public class powerManager
         powerChannel = false;
     }
 
-    public static void addpowertest()
-    {
-      for(int x = 0; x <= 5; x++) {
-          powerAmount += 50;
-      }
-    }
 
-    public static void ChannelOpen(int amount)
+    public static void ChannelOpen(double amount)
     {
         World world = MinecraftServer.getServer().worldServerForDimension(0);
 
         if(!world.isRemote) {
 
-            Random random = new Random();
-
-            powerAmount += (amount * random.nextInt());
+            powerAmount += amount;
 
         }
     }
 
-
-    public static void drainPower(int amount)
+    public static void drainPower(double amount)
     {
         World world = MinecraftServer.getServer().worldServerForDimension(0);
 
-        Random r = new Random();
-
-        if(world.isRemote)
+        if(!world.isRemote)
         {
-            powerAmount -= (amount * r.nextInt());
+            powerAmount -= amount;
         }
     }
 

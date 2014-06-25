@@ -1,6 +1,8 @@
 package com.xverion.network;
 
+import com.xverion.network.event.WorldEvent;
 import com.xverion.network.event.playerEvents;
+import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraftforge.common.MinecraftForge;
 
 /**
@@ -12,6 +14,7 @@ public class CommonProxy
     {
 
         MinecraftForge.EVENT_BUS.register(new playerEvents());
+        FMLCommonHandler.instance().bus().register(new WorldEvent());
 
     }
 }
