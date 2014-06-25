@@ -44,11 +44,11 @@ public class LivingFurkaWood extends Block
     }
 
 
-    public static void ReceivePower(double amount){
+    public static void ReceivePower(double amount, int x, int y, int z){
         storage.addpowerToStorage(amount);
          if(storage.CheckAmountForImbue())
          {
-
+            System.out.println("reached");
          }
     }
 }

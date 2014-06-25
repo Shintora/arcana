@@ -19,14 +19,14 @@ public class WorldEvent
             if (powerManager.powerChannel) {
                 powerManager.ChannelOpen(1);
 
-                System.out.println(powerManager.getPower());
+
             }
 
             if (!powerManager.powerChannel) {
                if(powerManager.getPower() > 0) {
                    powerManager.drainPower(2.5);
 
-                   System.out.println(powerManager.getPower());
+
                }
 
             }
