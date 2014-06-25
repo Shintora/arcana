@@ -1,9 +1,12 @@
 package com.xverion.power;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 
 import java.util.Random;
+
+
 
 /**
  * Created by brian on 6/16/2014.
@@ -14,7 +17,7 @@ public class powerManager
 
     protected double[] runes = {1000, 3000, 6000, 12000, 16000, 20000, 30000, 60000};
 
-    protected static boolean powerChannel;
+    public static boolean powerChannel;
 
     protected static double powerAmount;
 
@@ -22,6 +25,7 @@ public class powerManager
     {
         namePlayer = playerName;
         System.out.println(namePlayer);
+        powerChannel = false;
     }
 
     public static void addpowertest()
@@ -31,35 +35,29 @@ public class powerManager
       }
     }
 
-    public static void ChannelOpen(int amount, World world, EntityPlayer player)
+    public static void ChannelOpen(int amount)
     {
-      if(world.isRemote) {
-          if (namePlayer == player.getDisplayName()) {
-              Random random = new Random();
+        World world = MinecraftServer.getServer().worldServerForDimension(0);
 
-              powerChannel = true;
+        if(!world.isRemote) {
 
-              powerAmount += (amount * random.nextDouble());
-          }
-      }
-    }
+            Random random = new Random();
 
-    public static void onChannelClosed(EntityPlayer player)
-    {
-        if(namePlayer == player.getDisplayName())
-        {
-            powerChannel = false;
+            powerAmount += (amount * random.nextInt());
+
         }
     }
 
-    public static void drainPower(int amount, Random r, World world, EntityPlayer player)
+
+    public static void drainPower(int amount)
     {
-        if(world.isRemote && !powerChannel)
+        World world = MinecraftServer.getServer().worldServerForDimension(0);
+
+        Random r = new Random();
+
+        if(world.isRemote)
         {
-            if(namePlayer == player.getDisplayName())
-            {
-                powerAmount -= (amount * r.nextDouble());
-            }
+            powerAmount -= (amount * r.nextInt());
         }
     }
 
@@ -67,4 +65,19 @@ public class powerManager
     {
         return powerAmount;
     }
+
+    public static void setChannelState()
+    {
+        if(powerChannel)
+        {
+            powerChannel = false;
+        }
+
+        else
+        {
+            powerChannel  = true;
+        }
+    }
+
+
 }

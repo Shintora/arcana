@@ -13,17 +13,15 @@ import net.minecraft.world.World;
 public class keyLogic
 {
 
-    World world;
-    EntityPlayer player;
 
     @SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event)
     {
         if(keybindHandler.channelArcana.isPressed())
         {
-            powerManager.ChannelOpen(50, world, player);
 
-            System.out.println(powerManager.getPower());
+            powerManager.setChannelState();
+
         }
     }
 
