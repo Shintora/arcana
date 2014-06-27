@@ -9,6 +9,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraft.creativetab.CreativeTabs;
 
 /**
  * Created by brian on 6/16/2014.
@@ -24,6 +25,8 @@ public class arcana
 
     @SidedProxy(clientSide = "com.xverion.client.ClientProxy", serverSide = "com.xverion.network.CommonProxy")
     public static CommonProxy proxy;
+
+    public static CreativeTabs arcanaTab = new CreativeTabsArcana("arcanaTab");
 
     @Mod.EventHandler
     public void load(FMLPreInitializationEvent event)

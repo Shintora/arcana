@@ -1,4 +1,6 @@
 tile.DeadFurkaWood.name=Dead Furka Wood
 tile.LivingFurkaWood.name=Living Furka Wood
 
+itemGroup.arcanaTab=Arcana
+
 item.simpleStave.name=Simple Stave

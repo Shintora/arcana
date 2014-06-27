@@ -2,6 +2,7 @@ package com.xverion.block;
 
 import com.xverion.block.blocks.DeadFurkaWood;
 import com.xverion.block.blocks.LivingFurkaWood;
+import com.xverion.block.tileEntity.TileEntityWood;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -24,7 +25,7 @@ public class block
         GameRegistry.registerBlock(DeadFurkaWood, DeadFurkaWood.getLocalizedName().substring(1));
         GameRegistry.registerBlock(LivingFurkaWood, LivingFurkaWood.getLocalizedName().substring(2));
 
-
+        GameRegistry.registerTileEntity(TileEntityWood.class, "furkaWood");
 
     }
 

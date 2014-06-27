@@ -17,7 +17,7 @@ public class WorldEvent
         if(!event.world.isRemote) {
 
             if (powerManager.powerChannel) {
-                powerManager.ChannelOpen(1);
+                powerManager.ChannelOpen(10);
 
 
             }

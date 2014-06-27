@@ -1,5 +1,6 @@
 package com.xverion.block.blocks;
 
+import com.xverion.main.arcana;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -16,7 +17,7 @@ public class DeadFurkaWood extends Block
         this.setBlockName("DeadFurkaWood");
         this.setHardness(4.0F);
         this.setResistance(4.0F);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(arcana.arcanaTab);
     }
 
     @Override

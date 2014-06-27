@@ -12,11 +12,6 @@ public class powerManager
 {
     protected static String namePlayer;
 
-    protected static int playerLevelRune;
-
-    protected double[] runes = {100, 1000, 3000, 6000, 12000, 16000, 20000, 30000, 60000};
-    protected static double[] amountToDrain = {0.01, 0.1, 0.3, 0.6, 1.2, 1.6, 2, 3, 6};
-
     public static boolean powerChannel;
 
     protected static double powerAmount;
@@ -26,7 +21,6 @@ public class powerManager
         namePlayer = playerName;
         System.out.println(namePlayer);
         powerChannel = false;
-        playerLevelRune = 2;
     }
 
 
@@ -69,10 +63,8 @@ public class powerManager
         }
     }
 
-    public static double getAmountToDrain()
-    {
-        return amountToDrain[playerLevelRune];
-    }
+
+
 
 
 }

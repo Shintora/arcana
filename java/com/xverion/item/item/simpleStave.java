@@ -1,12 +1,17 @@
 package com.xverion.item.item;
 
 import com.xverion.block.blocks.LivingFurkaWood;
+import com.xverion.block.tileEntity.TileEntityWood;
+import com.xverion.main.arcana;
+import com.xverion.power.IBlockPowerManager;
 import com.xverion.power.powerManager;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
@@ -18,7 +23,7 @@ public class simpleStave extends Item
     public simpleStave()
     {
         super();
-        this.setCreativeTab(CreativeTabs.tabTools);
+        this.setCreativeTab(arcana.arcanaTab);
         setUnlocalizedName("simpleStave");
     }
 
@@ -30,17 +35,24 @@ public class simpleStave extends Item
     }
 
     @Override
-    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int meta, float hitX, float hitY, float PartialTickTime) {
+    public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
+    {
+
         MovingObjectPosition move = getMovingObjectPositionFromPlayer(world, player, true);
 
-        powerManager.drainPower(powerManager.getAmountToDrain());
-
-        if(world.getBlock(move.blockX, move.blockY, move.blockZ) instanceof LivingFurkaWood)
+        if(!world.isRemote)
         {
-            LivingFurkaWood.ReceivePower(powerManager.getAmountToDrain(), move.blockX, move.blockY, move.blockZ);
+            TileEntity tile = world.getTileEntity(move.blockX, move.blockY, move.blockZ);
+
+            if(tile instanceof IBlockPowerManager)
+            {
+
+                ((IBlockPowerManager) tile).addPower(100, world, player, move.blockX, move.blockY, move.blockZ);
+
+            }
         }
 
-        return true;
+        return stack;
 
     }
 }

@@ -18,26 +18,23 @@ public class blockPowerStorage
         this.Needed = neededAmount;
     }
 
-    public void addpowerToStorage(double amount)
+    public void setAmountStored(double amount)
     {
         AmountStored += amount;
     }
 
-    public double getPowerStored()
+    public double getAmountStored()
     {
         return AmountStored;
     }
 
-    public boolean CheckAmountForImbue()
+    public double getAmountStoredMax()
     {
-        if(getPowerStored() >= Needed)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return AmountStoredMax;
     }
 
+    public double getAmountNeeded()
+    {
+        return Needed;
+    }
 }
