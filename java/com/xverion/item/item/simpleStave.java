@@ -42,14 +42,17 @@ public class simpleStave extends Item
 
         if(!world.isRemote)
         {
-            TileEntity tile = world.getTileEntity(move.blockX, move.blockY, move.blockZ);
 
-            if(tile instanceof IBlockPowerManager)
-            {
+          if(move != null) {
 
-                ((IBlockPowerManager) tile).addPower(100, world, player, move.blockX, move.blockY, move.blockZ);
+              TileEntity tile = world.getTileEntity(move.blockX, move.blockY, move.blockZ);
 
-            }
+              if (tile instanceof IBlockPowerManager) {
+
+                  ((IBlockPowerManager) tile).addPower(100, world, player, move.blockX, move.blockY, move.blockZ);
+
+              }
+          }
         }
 
         return stack;

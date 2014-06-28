@@ -40,6 +40,16 @@ public class LivingFurkaWood extends BlockContainer
     }
 
     @Override
+    public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
+        super.breakBlock(world, x, y, z, block, meta);
+
+        if(world.getTileEntity(x,y,z) != null)
+        {
+            world.removeTileEntity(x,y,z);
+        }
+    }
+
+    @Override
     public void registerBlockIcons(IIconRegister icon)
     {
         blockIcon = icon.registerIcon("arcana:LivingFurkaWood");
